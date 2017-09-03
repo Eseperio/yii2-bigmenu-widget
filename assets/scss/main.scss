@@ -1,0 +1,280 @@
+$hamburger-padding-x                       : 15px !default;
+$hamburger-padding-y                       : 15px !default;
+$hamburger-layer-width                     : 30px !default;
+$hamburger-layer-height                    : 3px !default;
+$hamburger-layer-spacing                   : 6px !default;
+$hamburger-layer-color                     : #000 !default;
+$hamburger-layer-border-radius             : 4px !default;
+$hamburger-hover-opacity                   : 0.7 !default;
+$hamburger-hover-transition-duration       : 0.15s !default;
+$hamburger-hover-transition-timing-function: linear !default;
+
+@import "hamburgers/hamburgers";
+
+$breakpoint: 768px;
+$z-index:9999;
+
+$link-background: white;
+$link-color: #555;
+$link-color-hover:white;
+$link-background-hover:#ff0f4a;
+
+/* Pure CSS dropdown multilevel menu */
+
+/* Design mixins */
+@mixin first-level {
+  &:first-child a {
+    margin-left: 0;
+  }
+  &:last-child a {
+    margin-right: 0;
+  }
+  a {
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px;
+    display: block;
+    border-right: 1px solid #eee;
+    background-color: $link-background;
+    color: $link-color;
+    &:hover {
+      background-color: $link-background-hover;
+      color: $link-color-hover;
+      text-decoration: none;
+    }
+  }
+}
+
+@mixin second-level {
+text-align: left;
+  a {
+    padding-left: 20px;
+  }
+}
+
+/* Util mixin */
+@mixin hiddenState {
+  transition: all .3s ease;
+  transition-delay: .15s;
+  pointer-events: none;
+  transform: translateY(10px);
+  opacity: 0;
+}
+
+@mixin visibleState {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0px);
+}
+
+@mixin hiddenState-mobile {
+  transition: all .3s ease;
+  pointer-events: none;
+  transform: translateY(10px);
+  opacity: 0;
+  max-height: 0;
+  padding: 0;
+}
+
+@mixin visibleState-mobile {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0px);
+  max-height: 1800px;
+}
+
+.bigmenu {
+
+  /* Common rules */
+  position: relative;
+  label {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Normal menu - Large devices */
+  @media screen and (min-width: $breakpoint) {
+
+    /* Mobile stuff */
+    .bigmenu-toggle-mobile,
+    .toggle-submenu-mobile {
+      display: none;
+      + label {
+        display: none;
+      }
+    }
+
+    /* Main level */
+    > ul {
+      display: flex;
+      padding: 0;
+      margin: 0;
+      justify-content: space-between;
+      > li {
+        @include first-level;
+        align-items: center;
+        display: block;
+        text-align: center;
+        /* todo: Make space-around,... an option */
+        flex: 1 0 auto;
+
+        li {
+          @include second-level;
+          a {
+            margin: 0;
+          }
+        }
+        > ul {
+          left: 0;
+          top: 100%;
+        }
+
+        &:last-child, &:nth-last-child(2) {
+          > ul {
+            right: 0 !important;
+            left: auto;
+          }
+          ul {
+            left: auto;
+            right: 100%;
+          }
+        }
+      }
+      /* 2nd,3rds... levels*/
+
+      ul {
+        @include hiddenState;
+        box-shadow: 0 3px 10px 0 rgba(black,.3);
+        list-style: none;
+        padding: 0;
+        z-index: $z-index;
+        position: absolute;
+        width: 100%;
+        left: 100%;
+        top: 0;
+      }
+      li {
+
+        position: relative;
+        &:not(.bigmenu-ajax):hover {
+          > ul {
+            @include visibleState;
+          }
+        }
+
+      }
+
+    }
+    // > ul
+
+    .bigmenu-page-panel {
+      position: absolute;
+      z-index: $z-index;
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 3px 10px 0 rgba(black,.3);
+      &:hover {
+        @include visibleState
+      }
+      @include hiddenState;
+      &.opened {
+        @include visibleState
+      }
+
+    }
+
+  }
+
+  /* Collapsed menu  - small devices*/
+  @media screen and (max-width: #{$breakpoint - 1px}) {
+
+    /* hide all checkboxes */
+    input[type="checkbox"] {
+      display: none;
+
+      &.bigmenu-toggle-mobile:checked ~ ul.main-bigmenu {
+        @include visibleState-mobile
+      }
+      &.toggle-submenu-mobile:checked ~ ul {
+        @include visibleState-mobile
+      }
+    }
+
+    text-align: right;
+    font-size: 16px;
+
+    .hamburger {
+      .hamburger-box {
+        margin-top: 3px;
+      }
+    }
+    .caret {
+      display: none;
+    }
+    ul {
+      text-align: left;
+      @include hiddenState-mobile;
+      background-color: white;
+      list-style: none;
+      padding: 0;
+      ul {
+        background-color: #f9f9f9;
+      }
+      li {
+        position: relative;
+        padding-left: 1em;
+        border-bottom: 1px solid #ddd;
+        a {
+          padding: 15px;
+          display: block;
+        }
+        label {
+          position: absolute;
+          z-index: $z-index;
+          right: 0;
+          top: 0;
+          display: block;
+          height: 46px;
+          width: 76px;
+          span {
+            display: block;
+            position: absolute;
+            z-index: $z-index;
+            top: 50%;
+            right: 15px;
+            height: 4px;
+            border-radius: 4px;
+            background-color: #333;
+            width:10px;
+            transition: all .3s ease;
+            &:first-child {
+              transform: rotateZ(150deg) translateX(-2px) translateY(-4px);
+            }
+            &:last-child {
+              transform: rotateZ(-150deg) translateX(2px) translateY(-4px);
+
+            }
+          }
+
+        }
+        input[type="checkbox"]:checked + label {
+          span {
+            width: 20px;
+            &:first-child {
+              transform: rotateZ(135deg) translateX(0px);
+            }
+            &:last-child {
+              transform: rotateZ(-135deg) translateX(0px);
+
+            }
+          }
+        }
+
+      }
+    }
+
+    .bigmenu-page-panel {
+      display: none;
+    }
+  }
+}

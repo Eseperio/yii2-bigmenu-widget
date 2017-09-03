@@ -1,0 +1,35 @@
+{
+  "name": "eseperio/yii2-bigmenu-widget",
+  "description": "A yii2 pure CSS multilevel menu. With option to load views inside menu via ajax.",
+  "keywords": [
+    "yii2",
+    "widget",
+    "menu",
+    "multilevel",
+    "html",
+    "ajax",
+    "big",
+    "css"
+  ],
+  "homepage": "https://github.com/Eseperio/yii2-bigmenu-widget",
+  "type": "yii2-widget",
+  "license": "BSD 3-Clause",
+  "authors": [
+    {
+      "name": "Xenon",
+      "homepage": "http://xenonpublicidad.com/"
+    }
+  ],
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "eseperio\\bigmenu\\": ""
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
+}
