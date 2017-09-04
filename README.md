@@ -51,7 +51,7 @@ Bigmenu renders a PURE CSS multilevel menu with advanced functions.
    
 ## How to use
 This widget is based on yii/bootstrap/nav widget [yii\bootstrap\nav](http://www.yiiframework.com/doc-2.0/yii-bootstrap-nav.html).
-The main difference are:
+The main differences are:
 1. Allows infinite multilevel. For a better usability don´t use more than 3 levels.
 2. Allow render a page as a menu panel. With this you are free to make complex and advanced dropdowns menus.
 3. Render of pages in menu is made with ajax, and only one request is made per panel.
