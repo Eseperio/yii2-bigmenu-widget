@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: erosdelalamo
- * Date: 3/9/17
- * Time: 2:03
- */
+
 
 namespace eseperio\bigmenu;
 
