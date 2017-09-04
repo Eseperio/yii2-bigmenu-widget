@@ -40,3 +40,33 @@ Bigmenu renders a PURE CSS multilevel menu with advanced functions.
        'options' => ['class' =>'nav-pills'], // set this to nav-tab to get tab-styled navigation
    ]);
    ```
+   
+## How to use
+This widget is based on yii/bootstrap/nav widget [yii\bootstrap\nav](http://www.yiiframework.com/doc-2.0/yii-bootstrap-nav.html).
+The main difference are:
+1. Allows infinite multilevel. For a better usability don´t use more than 3 levels.
+2. Allow render a page as a menu panel. With this you are free to make complex and advanced dropdowns menus.
+3. Render of pages in menu is made with ajax, and only one request is made per panel.
+
+To use as simple multilevel pass an array to `items` property. See `yii\bootstrap\nav` documentation.
+### Dynamic panels
+To use dynamic panels add to the menu item the property "page". This must be a link to the action that renders the page. 
+
+In your controller use eseperio\yii2-bigmenu\widget\BigmenuTrait. Then in your action, to render content call `$this->renderBigmenu($view,$options)`.
+
+Note: The trait only simplifies the task of differenciating render method, between `render` and `renderAjax`. So you can do this in your own controller if you don´t want to use traits.
+
+## Change hamburger
+This widget implements [Hamburgers by jonsuh](https://jonsuh.com/hamburgers/). You can change the hamburger like this
+```
+Bigmenu::widget([
+   'hamburger' => "slide",
+   'items' => [...]
+])
+```
+
+
+## Screenshots   
+![Bigmenu screenshot](https://github.com/Eseperio/yii2-bigmenu-widget/blob/master/Captura%20de%20pantalla%202017-09-04%20a%20las%201.32.02.png?raw=true)
+![Bigmenu screenshot](https://github.com/Eseperio/yii2-bigmenu-widget/blob/master/Captura%20de%20pantalla%202017-09-04%20a%20las%201.31.54.png?raw=true)
+![Bigmenu screenshot](https://github.com/Eseperio/yii2-bigmenu-widget/blob/master/Captura%20de%20pantalla%202017-09-04%20a%20las%201.33.08.png?raw=true)
