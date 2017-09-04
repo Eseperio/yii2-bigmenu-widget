@@ -4,7 +4,7 @@
 
 Bigmenu renders a PURE CSS multilevel menu with advanced functions.
    It works like default nav widget, but dropdowns are pure css.
-   It also allows large menu items loaded vía ajax using `page` parameter.
+   It also **allows large menu items loaded vía ajax** using `page` parameter.
    It has no limit on levels, but be careful. A lot of levels are uncomfortable for users.
 
 
