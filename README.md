@@ -1,4 +1,4 @@
-# yii2-bigmenu-widget
+# Yii2 bigmenu widget. Multilevel menu, PURE CSS
 
 > Any code contribution is welcome
 
