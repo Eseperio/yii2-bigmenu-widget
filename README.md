@@ -2,11 +2,13 @@
 
 Bigmenu renders a PURE CSS multilevel menu with advanced functions.
    It works like default nav widget, but dropdowns are pure css.
-   It also allows large menu items loaded vía ajax using `page' parameter.
+   It also allows large menu items loaded vía ajax using `page` parameter.
    It has no limit on levels, but be careful. A lot of levels are uncomfortable to users.
   
    If an item have `page` property and items the first one will be available on medium-large devices
    Meanwhile on mobile devices items will be rendered.
+   
+   [Screenshots](#screenshots)
 
  ```php
    echo Bigmenu::widget([
@@ -51,6 +53,16 @@ The main difference are:
 To use as simple multilevel pass an array to `items` property. See `yii\bootstrap\nav` documentation.
 ### Dynamic panels
 To use dynamic panels add to the menu item the property "page". This must be a link to the action that renders the page. 
+
+```
+Bigmenu::widget([
+   'hamburger' => "slide",
+   'items' => [
+      ['label'=>"Dynamic content", "url"=>["site/index"], "page"=>["site/samplemenupage"] ],
+      ...
+   ]
+])
+```
 
 In your controller use eseperio\yii2-bigmenu\widget\BigmenuTrait. Then in your action, to render content call `$this->renderBigmenu($view,$options)`.
 
