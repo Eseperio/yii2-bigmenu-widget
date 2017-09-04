@@ -81,6 +81,8 @@ Bigmenu::widget([
 
 
 ## Screenshots   
+This first screenshot shows a view rendered and loaded vía ajax automatically with this widget.
 ![Bigmenu screenshot](https://github.com/Eseperio/yii2-bigmenu-widget/blob/master/Captura%20de%20pantalla%202017-09-04%20a%20las%201.32.02.png?raw=true)
 ![Bigmenu screenshot](https://github.com/Eseperio/yii2-bigmenu-widget/blob/master/Captura%20de%20pantalla%202017-09-04%20a%20las%201.31.54.png?raw=true)
+Mobile friendly
 ![Bigmenu screenshot](https://github.com/Eseperio/yii2-bigmenu-widget/blob/master/Captura%20de%20pantalla%202017-09-04%20a%20las%201.33.08.png?raw=true)
