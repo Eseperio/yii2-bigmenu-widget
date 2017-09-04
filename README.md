@@ -6,9 +6,13 @@ Bigmenu renders a PURE CSS multilevel menu with advanced functions.
    It works like default nav widget, but dropdowns are pure css.
    It also allows large menu items loaded vía ajax using `page` parameter.
    It has no limit on levels, but be careful. A lot of levels are uncomfortable for users.
-  
-   If an item have `page` property and items the first one will be available on medium-large devices.
-   Meanwhile on mobile devices items will be rendered.
+
+
+## Installation
+`composer require eseperio/yii2-bigmenu-widget` 
+
+
+   When an item have `page` property and `items`, the first one will be available on medium-large devices meanwhile on second will be available on mobile devices. 
    
    [Screenshots](#screenshots)
 
