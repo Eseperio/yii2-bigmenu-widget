@@ -1,5 +1,7 @@
 # yii2-bigmenu-widget
 
+> Any code contribution is welcome
+
 Bigmenu renders a PURE CSS multilevel menu with advanced functions.
    It works like default nav widget, but dropdowns are pure css.
    It also allows large menu items loaded vía ajax using `page` parameter.
