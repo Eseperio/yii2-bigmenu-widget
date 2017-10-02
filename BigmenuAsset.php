@@ -13,6 +13,7 @@ class BigmenuAsset extends AssetBundle
     ];
 
     public $js = [
+        'js/jquery.hoverIntent.min.js',
         'js/bigmenu.js',
     ];
 
