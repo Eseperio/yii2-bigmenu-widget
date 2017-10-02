@@ -1,3 +1,4 @@
+
 (function ($) {
 
     $.fn.bigmenu = function (options) {
@@ -23,8 +24,7 @@
             },
             _load: function (o) {
                 var pageToLoad = o.data('bigmenu-page');
-
-                o.hover(function () {
+                o.hoverIntent(function () {
                     if (typeof contentBuffer[pageToLoad] != "string") {
                         $.ajax({
                             method: "GET",
