@@ -13,7 +13,7 @@
   ],
   "homepage": "https://github.com/Eseperio/yii2-bigmenu-widget",
   "type": "yii2-widget",
-  "license": "BSD 3-Clause",
+  "license": "MIT",
   "authors": [
     {
       "name": "Xenon",
