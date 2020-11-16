@@ -238,7 +238,8 @@ class Bigmenu extends Widget
             throw new InvalidConfigException("The 'label' option is required.");
         }
         $encodeLabel = isset($item['encode']) ? $item['encode'] : $this->encodeLabels;
-        $label = $encodeLabel ? Html::encode($item['label']) : $item['label'];
+        $labelString = htmlspecialchars_decode($item['label']);
+        $label = $encodeLabel ? Html::encode($labelString) : $labelString;
         $options = ArrayHelper::getValue($item, 'options', []);
         $items = ArrayHelper::getValue($item, 'items');
         $page = ArrayHelper::getValue($item, 'page', false);
