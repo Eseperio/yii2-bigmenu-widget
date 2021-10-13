@@ -46,7 +46,7 @@ $link-background-hover:#ff0f4a;
 }
 
 @mixin second-level {
-text-align: left;
+  text-align: left;
   a {
     padding-left: 20px;
   }
@@ -93,8 +93,7 @@ text-align: left;
   }
 
   /* Normal menu - Large devices */
-  @media screen and (min-width: $breakpoint) {
-
+  &:not(.responsive) {
     /* Mobile stuff */
     .bigmenu-toggle-mobile,
     .toggle-submenu-mobile {
@@ -182,11 +181,11 @@ text-align: left;
       }
 
     }
-
   }
 
+
   /* Collapsed menu  - small devices*/
-  @media screen and (max-width: #{$breakpoint - 1px}) {
+  &.responsive{
 
     /* hide all checkboxes */
     input[type="checkbox"] {

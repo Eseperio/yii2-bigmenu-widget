@@ -163,6 +163,13 @@ class Bigmenu extends Widget
      * @var bool Whether to draw or not the box for dynamic loaded menus
      */
     public $hasPages = false;
+    /**
+     * @var array the options used in js. By default:
+     * [
+     *   widthToEnableResponsive: 768
+     * ]
+     */
+    public $jsOptions = [];
 
     /**
      * @var int Iterations counter for toggle-submenu labels
@@ -192,7 +199,9 @@ class Bigmenu extends Widget
      */
     public function run()
     {
-        BigmenuAsset::register($this->getView());
+        $view = $this->getView();
+        $view->registerJsVar('YII2_BIGMENU_WIDGET_OPTIONS', $this->jsOptions);
+        BigmenuAsset::register($view);
 
         return $this->renderItems();
     }
@@ -238,8 +247,7 @@ class Bigmenu extends Widget
             throw new InvalidConfigException("The 'label' option is required.");
         }
         $encodeLabel = isset($item['encode']) ? $item['encode'] : $this->encodeLabels;
-        $labelString = htmlspecialchars_decode($item['label']);
-        $label = $encodeLabel ? Html::encode($labelString) : $labelString;
+        $label = $encodeLabel ? Html::encode($item['label']) : $item['label'];
         $options = ArrayHelper::getValue($item, 'options', []);
         $items = ArrayHelper::getValue($item, 'items');
         $page = ArrayHelper::getValue($item, 'page', false);

@@ -1,12 +1,10 @@
-
 (function ($) {
 
     $.fn.bigmenu = function (options) {
 
-
+        var self = this;
         var settings = $.extend({
-            color: "#556b2f",
-            backgroundColor: "white"
+            widthToEnableResponsive: 768
         }, options);
 
         /* Pages are stored here instead loading again */
@@ -15,11 +13,19 @@
         /* Main selector for dynamic loaded content */
         var pageBoxSelector = ".bigmenu-page-panel";
 
+        var resize = function (e) {
+            var o = $(self).closest('.bigmenu');
+            if (window.innerWidth >= settings.widthToEnableResponsive) {
+                o.removeClass('responsive');
+            } else {
+                o.addClass('responsive');
+            }
+        };
         var bigmenu = {
             loadContent: function (o) {
-                if(window.innerWidth >= 768)
-                {
-                    this._load(o)
+                self.resize();
+                if (window.innerWidth >= settings.widthToEnableResponsive) {
+                    this._load(o);
                 }
             },
             _load: function (o) {
@@ -34,8 +40,10 @@
                                 //pageTarget.html("Loading");
                             }
                         }).done(function (data, textStatus, jqXHR) {
-                            contentBuffer[pageToLoad] = data;
-                            pageTarget.html(data).addClass('opened');
+                            if (data) {
+                                contentBuffer[pageToLoad] = data;
+                                pageTarget.html(data).addClass('opened');
+                            }
 
                         }).fail(function (data, textStatus, jqXHR) {
                             if (console) {
@@ -57,17 +65,18 @@
         };
 
         var pageTarget = $(pageBoxSelector);
+
+        $(window).resize(function(){
+            resize();
+        })
         return this.each(function () {
             /* hoverIn */
             var o = $(this);
-
             bigmenu.loadContent(o);
-
-
         })
 
     };
 
 }(jQuery));
 
-$(".bigmenu-ajax").bigmenu();
+$(".bigmenu-ajax").bigmenu(YII2_BIGMENU_WIDGET_OPTIONS);
