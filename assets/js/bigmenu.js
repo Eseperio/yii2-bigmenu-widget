@@ -78,4 +78,7 @@
         });
     };
 }(jQuery));
+$(function() {
 $(".bigmenu").bigmenu(YII2_BIGMENU_WIDGET_OPTIONS);
+});
+
