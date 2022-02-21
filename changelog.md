@@ -1,6 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file.
-
+## [1.4]
+- jQuery Bigmenu created before page rendered. Fixed
 ## [1.3]
 - Fix style bug in responsive version
 ## [1.2]
