@@ -705,6 +705,7 @@
 .bigmenu {
   /* Common rules */
   position: relative;
+  overflow-x: hidden;
   /* Normal menu - Large devices */
   /* Collapsed menu  - small devices*/ }
   .bigmenu label {
