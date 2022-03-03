@@ -166,7 +166,7 @@ class Bigmenu extends Widget
     /**
      * @var array the options used in js. By default:
      * [
-     *   widthToEnableResponsive: 768
+     *   widthToEnableResponsive => 768
      * ]
      */
     public $jsOptions = [];
