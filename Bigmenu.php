@@ -200,6 +200,12 @@ class Bigmenu extends Widget
     public function run()
     {
         $view = $this->getView();
+        $widthToEnableResponsive = (int)($this->jsOptions['widthToEnableResponsive'] ?? 768) .'px';
+        $view->registerCss('@media (max-width:' . $widthToEnableResponsive . '){
+            .bigmenu{
+                overflow-x: hidden;
+            }
+         }');
         $view->registerJsVar('YII2_BIGMENU_WIDGET_OPTIONS', $this->jsOptions);
         BigmenuAsset::register($view);
 
@@ -315,7 +321,7 @@ class Bigmenu extends Widget
     /**
      * Renders the given items as a dropdown.
      * This method is called to create sub-menus.
-     * @param array $items      the given items. Please refer to [[Dropdown::items]] for the array structure.
+     * @param array $items the given items. Please refer to [[Dropdown::items]] for the array structure.
      * @param array $parentItem the parent item information. Please refer to [[items]] for the structure of this array.
      * @return string the rendering result.
      * @since 2.0.1
@@ -341,7 +347,7 @@ class Bigmenu extends Widget
 
     /**
      * Check to see if a child item is active optionally activating the parent.
-     * @param array $items    @see items
+     * @param array $items @see items
      * @param boolean $active should the parent be active too
      * @return array @see items
      */

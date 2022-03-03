@@ -705,7 +705,6 @@
 .bigmenu {
   /* Common rules */
   position: relative;
-  overflow-x: hidden;
   /* Normal menu - Large devices */
   /* Collapsed menu  - small devices*/ }
   .bigmenu label {
@@ -803,9 +802,12 @@
         pointer-events: all;
         transform: translateY(0px); }
   .bigmenu.responsive {
-    /* hide all checkboxes */
     text-align: right;
-    font-size: 16px; }
+    overflow-y: visible;
+    display: table;
+    width: 100%;
+    font-size: 0px;
+    /* hide all checkboxes */ }
     .bigmenu.responsive input[type="checkbox"] {
       display: none; }
       .bigmenu.responsive input[type="checkbox"].bigmenu-toggle-mobile:checked ~ ul.main-bigmenu {
@@ -818,21 +820,28 @@
         pointer-events: all;
         transform: translateY(0px);
         max-height: 1800px; }
-    .bigmenu.responsive .hamburger .hamburger-box {
-      margin-top: 3px; }
+    .bigmenu.responsive .hamburger {
+      position: absolute;
+      top: 0;
+      transform: translateY(-100%);
+      right: 0; }
+      .bigmenu.responsive .hamburger .hamburger-box {
+        margin-top: 3px; }
     .bigmenu.responsive .caret {
       display: none; }
     .bigmenu.responsive ul {
-      text-align: left;
       transition: all .3s ease;
       pointer-events: none;
       transform: translateY(10px);
       opacity: 0;
       max-height: 0;
       padding: 0;
+      margin: 0;
+      text-align: left;
       background-color: white;
       list-style: none;
-      padding: 0; }
+      padding: 0;
+      font-size: 16px; }
       .bigmenu.responsive ul ul {
         background-color: #f9f9f9; }
       .bigmenu.responsive ul li {

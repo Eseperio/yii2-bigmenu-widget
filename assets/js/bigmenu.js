@@ -36,8 +36,8 @@
                             }
                         }).done(function (data, textStatus, jqXHR) {
                             if (data) {
-                                contentBuffer[pageToLoad] = data;
-                                pageTarget.html(data).addClass('opened');
+                            contentBuffer[pageToLoad] = data;
+                            pageTarget.html(data).addClass('opened');
                             }
 
                         }).fail(function (data, textStatus, jqXHR) {
